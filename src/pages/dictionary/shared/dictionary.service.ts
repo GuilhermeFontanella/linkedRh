@@ -14,6 +14,6 @@ export class DictionaryService {
   ) { }
 
   getDictionaries(): Observable<Dictionary[]> {
-    return this.http.get<Dictionary[]>(`${environment.apiUrl}`);
+    return this.http.get<Dictionary[]>(`${environment.apiUrl}dicionarios`);
   }
 }

@@ -1,5 +1,5 @@
 <p-table [value]="data" [columns]="cols" styleClass="p-datatable-striped">
-    <ng-template pTemplate="header">
+    <ng-template pTemplate="header" *ngIf="showHeader">
         <tr>
             <th *ngFor="let col of cols">
                 {{ col.header }}
@@ -9,13 +9,18 @@
     <ng-template pTemplate="body" let-rowData let-columns>
         <tr>
             <td *ngFor="let col of cols">
-                {{ rowData[col.field] }}
-                <i 
-                *ngIf="col.field === 'acao'" 
-                class="{{ rowData[col.icon!] }}" 
-                style="font-size: 2rem"
-                (click)="emitEvent(rowData)"
-                ></i>
+                <div *ngIf="col.field != 'acao'">
+                    {{ rowData[col.field] }}
+                </div>
+                <div *ngIf="col.field === 'acao'" >
+                    <button
+                    pButton
+                    type="button"                     
+                    class="p-button-rounded p-button-secondary p-button-text blue"
+                    icon="{{col.icon}}"
+                    (click)="emitEvent(rowData)">
+                    </button>
+                </div>
             </td>
         </tr>
     </ng-template>

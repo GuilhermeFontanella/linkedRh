@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableStripedComponent } from './table-striped.component';
 import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 
 
 
@@ -10,7 +11,8 @@ import { TableModule } from 'primeng/table';
   exports: [ TableStripedComponent ],
   imports: [
     CommonModule,
-    TableModule
+    TableModule,
+    ButtonModule
   ]
 })
 export class TableStripedModule { }

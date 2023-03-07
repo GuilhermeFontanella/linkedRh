@@ -2,3 +2,21 @@
 
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.row {
+    --bs-gutter-x: 0px !important;
+}
+
+
+
+// .p-button.p-button-icon-only {
+//     width: 1.25rem !important;
+//     padding: 0.75rem 0.75rem !important;
+//     height: 1.25rem !important;
+//     color: white !important;
+// }

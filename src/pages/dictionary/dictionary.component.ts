@@ -18,12 +18,13 @@ export class DictionaryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.populateTable()
+    this.getDictionariesList();
   }
 
   getDictionariesList(): void {
     this.service.getDictionaries().subscribe((response) => {
       this.listOfDictionaries = response;
+      this.populateTable()
     });
   }
 
@@ -32,6 +33,7 @@ export class DictionaryComponent implements OnInit {
       {
         header: '',
         field: 'name',
+        icon: ''
       },
       {
         header: '',
@@ -42,6 +44,13 @@ export class DictionaryComponent implements OnInit {
       {
         header: '',
         field: 'description',
+        icon: ''
+      },
+      {
+        header: '',
+        field: 'acao',
+        icon: PrimeIcons.COG,
+        action: 'view'
       },
       {
         header: '',

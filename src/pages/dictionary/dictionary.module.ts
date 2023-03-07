@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { DictionaryComponent } from './dictionary.component';
 import { DictionaryRoutingModule } from './dictionary-routing.module';
 import { TableStripedModule } from 'src/shared/table-striped/table-striped.module';
-import { HttpClientModule } from '@angular/common/http';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -13,7 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     DictionaryRoutingModule,
     TableStripedModule,
-    HttpClientModule
+    ButtonModule
   ]
 })
 export class DictionaryModule { }

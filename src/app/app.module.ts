@@ -8,6 +8,7 @@ import { LayoutModule } from 'src/layout/layout.module';
 import { RouterModule } from '@angular/router';
 import { RippleModule } from 'primeng/ripple';
 import { HeaderModule } from "../layout/header/header.module";
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { HeaderModule } from "../layout/header/header.module";
         RouterModule,
         LayoutModule,
         RippleModule,
-        HeaderModule
+        HeaderModule,
+        HttpClientModule
     ],
 })
 export class AppModule { }

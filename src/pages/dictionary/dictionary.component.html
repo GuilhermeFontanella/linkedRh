@@ -1,2 +1,11 @@
-<p>Dicionário </p>
-<app-table-striped [data]="listOfDictionaries" [cols]="cols"></app-table-striped>
+<div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center mt-3 mb-3">
+        <h2 class="pe-2">Dicionário</h2>
+        <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded blue" styleClass="p-button-sm"></button>
+    </div>
+    <div class="d-flex align-items-center mt-3 mb-3">
+        <button pButton pRipple type="button" icon="pi pi-question" class="p-button-rounded green" styleClass="p-button-sm"></button>
+        <h4 class=" ps-2">Ajuda</h4>
+    </div>
+</div>
+<app-table-striped [data]="listOfDictionaries" [cols]="cols" [showHeader]="false"></app-table-striped>
