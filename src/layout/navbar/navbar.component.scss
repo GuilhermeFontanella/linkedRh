@@ -1,0 +1,37 @@
+.nav-bar {
+    background-color: #253C89;
+    height: 4rem; 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: auto;
+}
+
+::ng-deep .p-menubar {
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: none;
+}
+
+::ng-deep .p-menuitem-icon,
+::ng-deep .p-menuitem-text,
+::ng-deep .p-submenu-icon {
+    color: white !important;
+}
+
+::ng-deep .p-menuitem:hover {
+    ::ng-deep .p-menuitem-icon,
+    ::ng-deep .p-menuitem-text,
+    ::ng-deep .p-submenu-icon {
+        color: #253C89 !important;
+    }  
+}
+
+::ng-deep p-menubarsub {
+    margin: auto !important;
+}
+
+// .p-menubar .p-menu-list {
+//     ;
+// }
+
+
