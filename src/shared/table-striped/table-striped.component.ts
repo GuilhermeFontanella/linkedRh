@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Table } from './table.model';
 
 @Component({
@@ -6,7 +6,7 @@ import { Table } from './table.model';
   templateUrl: './table-striped.component.html',
   styleUrls: ['./table-striped.component.scss']
 })
-export class TableStripedComponent implements OnInit, OnChanges {
+export class TableStripedComponent implements OnInit {
   @Output() selectedItemEvent = new EventEmitter();
   @Input() data: any[] = [];
   @Input() cols!: Table[];
@@ -17,12 +17,8 @@ export class TableStripedComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
-
-  emitEvent(element: any): void {
-    this.selectedItemEvent.emit(element);
+  emitEvent(element: any, action: string): void {
+    this.selectedItemEvent.emit({ data: element, action });
   }
 
 }

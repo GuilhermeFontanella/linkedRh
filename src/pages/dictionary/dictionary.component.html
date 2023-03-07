@@ -8,4 +8,8 @@
         <h4 class=" ps-2">Ajuda</h4>
     </div>
 </div>
-<app-table-striped [data]="listOfDictionaries" [cols]="cols" [showHeader]="false"></app-table-striped>
+<app-table-striped 
+[data]="listOfDictionaries" 
+[cols]="cols" 
+[showHeader]="false"
+(selectedItemEvent)="processInformation($event)"></app-table-striped>

@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import 'bootstrap/scss/bootstrap';
 
 * {
     padding: 0px;
@@ -12,11 +12,15 @@
     --bs-gutter-x: 0px !important;
 }
 
+.p-card .p-card-body,
+.p-card .p-card-content {
+    padding: 0.5rem 0px !important;
+    margin-top: -0.4rem;
+}
 
-
-// .p-button.p-button-icon-only {
-//     width: 1.25rem !important;
-//     padding: 0.75rem 0.75rem !important;
-//     height: 1.25rem !important;
-//     color: white !important;
-// }
+#paginator .p-card {
+    height: 2rem;
+    border: 1px solid blue;
+    background: #103fda;
+    background: linear-gradient(0deg, rgba(0,228,255,0.25), rgba(3, 53, 255, 0.5) 26%, rgba(0,228,255,0.25) 100%);
+}

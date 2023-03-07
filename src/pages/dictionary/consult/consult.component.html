@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="title mt-5 mb-3">
+        <div class="d-flex flex-row justify-content-between align-items-center">
+            <div class="">
+                <h2>{{ parentDictionary.name }}</h2>
+            </div>
+            <div class="d-flex flex-row align-items-center">
+                <a href="" class="me-3" style="text-decoration: none;">abc</a>
+                <a href=""><i class="pi pi-cog"></i></a>
+            </div>
+        </div>
+        
+        <p-divider></p-divider>
+        <div class="mt-5" style="max-width: 80%; margin: auto;">
+            <app-paginator (letterSelected)="filterResults($event)"></app-paginator>
+        </div>
+        
+    </div>
+    <div *ngIf="!filteredByLetter.length">
+        <ul class="list-group list-group-flush striped-list" >
+            <li class="list-group-item" *ngFor="let word of data[0]?.wordList">
+                <div class="row">
+                    <div class="col-11">
+                        <strong>{{ word.word }}</strong> 
+                    </div>
+                    <div class="col-1" *ngIf="word.extraMeaning">
+                        <a href="" style="text-decoration: none;">Ver mais</a>
+                    </div>
+                    <div class="col-12">
+                        <span class="text-muted">
+                            {{ word.meaning }}
+                        </span>
+                    </div>
+                </div> 
+            </li>
+        </ul> 
+    </div>
+    <div *ngIf="filteredByLetter.length">
+        <ul class="list-group list-group-flush striped-list">
+            <li class="list-group-item" *ngFor="let word of filteredByLetter">
+                <div class="row">
+                    <div class="col-11">
+                        <strong>{{ word.word }}</strong> 
+                    </div>
+                    <div class="col-1" *ngIf="word.extraMeaning">
+                        <a href="" style="text-decoration: none;">Ver mais</a>
+                    </div>
+                    <div class="col-12">
+                        <span class="text-muted">
+                            {{ word.meaning }}
+                        </span>
+                    </div>
+                </div> 
+            </li>
+        </ul> 
+    </div>
+</div>

@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: 'dicionario',
     loadChildren: () => import('./dictionary/dictionary.module').then(m => m.DictionaryModule)
-  }
+  },
 ];
 
 @NgModule({

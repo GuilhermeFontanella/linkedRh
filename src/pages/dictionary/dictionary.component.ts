@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Table } from 'src/shared/table-striped/table.model';
 import { PrimeIcons } from 'primeng/api';
 import { Dictionary } from './shared/dictionary';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dictionary',
@@ -14,7 +15,8 @@ export class DictionaryComponent implements OnInit {
   cols: Table[] = [];
 
   constructor(
-    private service: DictionaryService
+    private service: DictionaryService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -50,15 +52,27 @@ export class DictionaryComponent implements OnInit {
         header: '',
         field: 'acao',
         icon: PrimeIcons.COG,
-        action: 'view'
+        action: 'edit'
       },
       {
         header: '',
         field: 'acao',
         icon: PrimeIcons.TIMES,
-        action: 'view'
+        action: 'delete'
       },
     ]
+  }
+
+  processInformation(event: {data: any, action: string}): void {
+    if (event.action === 'view') {
+      console.log('view');
+      this.router.navigate([`dicionario/consulta/${event.data.id}`])
+    } else if (event.action === 'edit') {
+      console.log('edit');
+    } else if (event.action === 'delete') {
+      console.log('delete');
+    }
+    console.log(event); 
   }
 
 }

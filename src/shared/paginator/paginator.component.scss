@@ -1,0 +1,25 @@
+ul {
+    margin-bottom: 0px !important;
+    padding-right: 2rem;
+}
+
+li {
+    cursor: pointer;
+    color: #103fda !important;
+    transition: ease-in-out 0.1s;
+}
+
+li:hover {
+    color: #f7f7f7 !important;
+    transition: ease-in-out 0.1s;
+}
+
+.p-card {
+    background: rgb(0,52,255);
+    background: linear-gradient(4deg, rgba(0,52,255,1) 26%, rgba(0,228,255,1) 100%);
+}
+
+.active {
+    //color: antiquewhite !important;
+    font-weight: bold;
+}

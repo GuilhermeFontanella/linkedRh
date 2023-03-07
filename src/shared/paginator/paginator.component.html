@@ -1,0 +1,12 @@
+<p-card id="paginator">
+    <div class="d-flex flex-row" >
+        <ul class="d-flex flex-row justify-content-around " style="width: 100%; list-style: none;">
+            <li
+            id="list"
+            *ngFor="let letter of alphabet; let i = index" 
+            (click)="letterSelected.emit({letter}); defineActiveLink(i)">
+                {{ letter }}
+            </li>
+        </ul>
+    </div>
+</p-card>
