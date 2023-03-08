@@ -26,3 +26,8 @@ h4 {
 .p-datatable-thead {
     display: none !important;
 }
+
+::ng-deep .p-confirm-dialog-reject, 
+::ng-deep .p-confirm-dialog-accept {
+    padding: 0.5rem 1rem !important;
+}

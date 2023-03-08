@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center justify-content-between">
     <div class="d-flex align-items-center mt-3 mb-3">
         <h2 class="pe-2">Dicionário</h2>
-        <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded blue" styleClass="p-button-sm"></button>
+        <button pButton pRipple type="button" icon="pi pi-plus" class="p-button-rounded blue" styleClass="p-button-sm" (click)="processInformation()"></button>
     </div>
     <div class="d-flex align-items-center mt-3 mb-3">
         <button pButton pRipple type="button" icon="pi pi-question" class="p-button-rounded green" styleClass="p-button-sm"></button>
@@ -12,4 +12,17 @@
 [data]="listOfDictionaries" 
 [cols]="cols" 
 [showHeader]="false"
-(selectedItemEvent)="processInformation($event)"></app-table-striped>
+(selectedItemEvent)="processInformation($event)">
+</app-table-striped>
+
+<p-confirmDialog
+[style]="{width: '30vw'}"
+rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
+
+<app-create-edit 
+[display]="display" 
+[data]="itemSelected" 
+(closeDialogEvent)="display = false"
+(saveData)="saveData($event)"></app-create-edit>
+

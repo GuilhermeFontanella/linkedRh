@@ -1,9 +1,10 @@
 import { DictionaryService } from './shared/dictionary.service';
 import { Component, OnInit } from '@angular/core';
 import { Table } from 'src/shared/table-striped/table.model';
-import { PrimeIcons } from 'primeng/api';
+import { MessageService, PrimeIcons } from 'primeng/api';
 import { Dictionary } from './shared/dictionary';
 import { Router } from '@angular/router';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-dictionary',
@@ -13,9 +14,13 @@ import { Router } from '@angular/router';
 export class DictionaryComponent implements OnInit {
   listOfDictionaries: Dictionary[] = [];
   cols: Table[] = [];
+  display: boolean = false;
+  itemSelected: Dictionary = {} as Dictionary;
 
   constructor(
     private service: DictionaryService,
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService,
     private router: Router
   ) { }
 
@@ -63,16 +68,86 @@ export class DictionaryComponent implements OnInit {
     ]
   }
 
-  processInformation(event: {data: any, action: string}): void {
-    if (event.action === 'view') {
-      console.log('view');
+  processInformation(event?: {data: any, action: string}): void {
+    if (!event) {
+      this.itemSelected = {} as Dictionary;
+      this.openDialog();
+    } else if (event?.action === 'view') {
       this.router.navigate([`dicionario/consulta/${event.data.id}`])
-    } else if (event.action === 'edit') {
-      console.log('edit');
-    } else if (event.action === 'delete') {
-      console.log('delete');
+    } else if (event?.action === 'edit') {
+      this.itemSelected = event.data;
+      this.openDialog();
+    } else if (event?.action === 'delete') {
+      this.confirmationService.confirm({
+        message: `Deseja excluir ${event.data.name}?`,
+        header: 'Excluir Dicionário',
+        icon: PrimeIcons.EXCLAMATION_TRIANGLE,
+        acceptLabel: 'Sim',
+        rejectLabel: 'Não',
+        accept: () => {
+          this.deleteDictionary(event.data.id);
+        }
+      })
     }
-    console.log(event); 
+  }
+
+  deleteDictionary(id: number): void {
+    this.service.deleteDictionary(id).subscribe(() => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Dicionário excluído com sucesso!'
+      });
+      this.getDictionariesList();
+    }, (error) => {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Ocorreu um erro ao tentar excluir esse dicionário.'
+      });
+    })
+  }
+
+  openDialog(): void {
+    this.display = true;
+  }
+
+  closeDialog(): void {
+    this.display = false;
+  }
+
+  saveData(event: any): void {
+    if (!event.id) {
+      this.service.createNewDictionary(event).subscribe(() => {
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Dicionário criado com sucesso!'
+        });
+        this.getDictionariesList();
+        this.closeDialog();
+      }, (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Ocorreu um erro.'
+        });
+        this.getDictionariesList();
+        this.closeDialog();
+      })
+    } else {
+      this.service.updateDictionary(event).subscribe(() => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Dicionário atualizado!'
+        });
+        this.getDictionariesList();
+        this.closeDialog();
+      }, (error) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Ocorreu um erro.'
+        });
+        this.getDictionariesList();
+        this.closeDialog();
+      })
+    }
   }
 
 }

@@ -24,4 +24,16 @@ export class DictionaryService {
   getDictionaryById(params: HttpParams): Observable<DictionaryData[]> {
     return this.http.get<DictionaryData[]>(`${environment.apiUrl}dicionario?${params}`);
   }
+
+  deleteDictionary(id: number): Observable<Dictionary> {
+    return this.http.delete<Dictionary>(`${environment.apiUrl}dicionarios/${id}`);
+  }
+
+  createNewDictionary(data: Dictionary): Observable<Dictionary> {
+    return this.http.post<Dictionary>(`${environment.apiUrl}dicionarios`, data);
+  }
+
+  updateDictionary(data: Dictionary): Observable<Dictionary> {
+    return this.http.put<Dictionary>(`${environment.apiUrl}dicionarios/${data.id}`, data);
+  }
 }

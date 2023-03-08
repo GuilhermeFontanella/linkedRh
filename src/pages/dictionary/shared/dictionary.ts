@@ -2,6 +2,10 @@ export interface Dictionary {
     id: number;
     name: string;
     description: string;
+    bgButton: string;
+    fontColorButton: string;
+    titleColorFonts: string;
+    iconColor: string;
 }
 
 export interface WordList {
