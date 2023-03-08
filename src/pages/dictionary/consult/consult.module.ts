@@ -7,6 +7,10 @@ import { DividerModule } from 'primeng/divider';
 import { PaginatorModule } from 'src/shared/paginator/paginator.module';
 import { ButtonModule } from 'primeng/button';
 import { CreateEditModule } from '../create-edit/create-edit.module';
+import { MessagesModule } from 'primeng/messages';
+import { TooltipModule } from 'primeng/tooltip';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 
 
 
@@ -21,7 +25,10 @@ import { CreateEditModule } from '../create-edit/create-edit.module';
     PaginatorModule,
     PaginatorModule,
     ButtonModule,
-    CreateEditModule
+    CreateEditModule,
+    MessagesModule,
+    TooltipModule,
+    ConfirmDialogModule
   ]
 })
 export class ConsultModule { }

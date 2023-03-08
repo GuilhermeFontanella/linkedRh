@@ -10,12 +10,35 @@
                 icon="pi pi-plus" 
                 iconPos="left" 
                 label="Palavra"
-                (click)="showDialog()">
+                (click)="newWord()">
                 </button>            
             </div>
             <div class="d-flex flex-row align-items-center">
-                <a href="" class="me-3" style="text-decoration: none;">abc</a>
-                <a href=""><i class="pi pi-cog"></i></a>
+                <a href="#" class="me-3" style="text-decoration: none;">abc</a>
+                <button
+                *ngIf="!editMode" 
+                pButton 
+                pRipple 
+                type="button" 
+                icon="pi pi-cog"
+                pTooltip="Modo de edição"
+                [showDelay]="500"
+                tooltipPosition="bottom" 
+                class="p-button-rounded p-button-text"
+                (click)="setEditMode()">
+                </button>
+                <button
+                *ngIf="editMode" 
+                pButton 
+                pRipple 
+                type="button" 
+                icon="pi pi-check"
+                pTooltip="Finalizar edição"
+                [showDelay]="500"
+                tooltipPosition="bottom"
+                class="p-button-rounded p-button-text"
+                (click)="setEditMode()">
+                </button>
             </div>
         </div>
         
@@ -27,13 +50,37 @@
     </div>
     <div *ngIf="!filteredByLetter.length">
         <ul class="list-group list-group-flush striped-list" >
-            <li class="list-group-item" *ngFor="let word of data[0]?.wordList">
+            <li class="list-group-item" *ngFor="let word of data">
                 <div class="row">
-                    <div class="col-11">
+                    <div class="col-10">
                         <strong>{{ word.word }}</strong> 
                     </div>
-                    <div class="col-1" *ngIf="word.extraMeaning">
+                    <div class="col-2" *ngIf="word.extraMeaning && !editMode" style="text-align: end;">
                         <a href="" style="text-decoration: none;">Ver mais</a>
+                    </div>
+                    <div class="col-2" *ngIf="editMode" style="text-align: end;">
+                        <button
+                        pButton 
+                        pRipple 
+                        type="button" 
+                        icon="pi pi-pencil"
+                        pTooltip="Editar palavra"
+                        [showDelay]="500"
+                        tooltipPosition="bottom"
+                        class="p-button-rounded p-button-text"
+                        (click)="editWord(word)">
+                        </button>
+                        <button
+                        pButton 
+                        pRipple 
+                        type="button" 
+                        icon="pi pi-trash"
+                        pTooltip="Excluir palavra"
+                        [showDelay]="500"
+                        tooltipPosition="bottom"
+                        class="p-button-rounded p-button-text"
+                        (click)="confirmDeleteWord(word)">
+                        </button>
                     </div>
                     <div class="col-12">
                         <span class="text-muted">
@@ -48,11 +95,35 @@
         <ul class="list-group list-group-flush striped-list">
             <li class="list-group-item" *ngFor="let word of filteredByLetter">
                 <div class="row">
-                    <div class="col-11">
+                    <div class="col-10">
                         <strong>{{ word.word }}</strong> 
                     </div>
-                    <div class="col-1" *ngIf="word.extraMeaning">
+                    <div class="col-2" *ngIf="word.extraMeaning && !editMode" style="text-align: end;">
                         <a href="" style="text-decoration: none;">Ver mais</a>
+                    </div>
+                    <div class="col-2" *ngIf="editMode" style="text-align: end;">
+                        <button
+                        pButton 
+                        pRipple 
+                        type="button" 
+                        icon="pi pi-pencil"
+                        pTooltip="Editar palavra"
+                        [showDelay]="500"
+                        tooltipPosition="bottom"
+                        class="p-button-rounded p-button-text"
+                        (click)="editWord(word)">
+                        </button>
+                        <button
+                        pButton 
+                        pRipple 
+                        type="button" 
+                        icon="pi pi-trash"
+                        pTooltip="Excluir palavra"
+                        [showDelay]="500"
+                        tooltipPosition="bottom"
+                        class="p-button-rounded p-button-text"
+                        (click)="confirmDeleteWord(word)">
+                        </button>
                     </div>
                     <div class="col-12">
                         <span class="text-muted">
@@ -66,9 +137,15 @@
 </div>
 
 <app-create-edit 
+[data]="createEdit"
 header="Nova palavra" 
 [isWord]="true" 
 [display]="display" 
 (closeDialogEvent)="display = false" 
 (saveData)="saveWord($event)">
 </app-create-edit>
+
+<p-confirmDialog
+[style]="{width: '30vw'}"
+rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>

@@ -9,6 +9,7 @@ export interface Dictionary {
 }
 
 export interface WordList {
+    parentDictionaryId: number;
     id: number;
     word: string;
     meaning: string;

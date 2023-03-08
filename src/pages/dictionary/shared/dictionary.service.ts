@@ -21,8 +21,8 @@ export class DictionaryService {
     return this.http.get<Dictionary>(`${environment.apiUrl}dicionarios/${id}`);
   }
 
-  getDictionaryById(params: HttpParams): Observable<DictionaryData[]> {
-    return this.http.get<DictionaryData[]>(`${environment.apiUrl}dicionario?${params}`);
+  getDictionaryById(params: HttpParams): Observable<WordList[]> {
+    return this.http.get<WordList[]>(`${environment.apiUrl}dicionario?${params}`);
   }
 
   deleteDictionary(id: number): Observable<Dictionary> {
@@ -37,11 +37,15 @@ export class DictionaryService {
     return this.http.put<Dictionary>(`${environment.apiUrl}dicionarios/${data.id}`, data);
   }
 
-  createNewWord(id: number, data: WordList): Observable<WordList> {
-    return this.http.post<WordList>(`${environment.apiUrl}dicionario/${id}`, data);
+  createNewWord(params: HttpParams, data: WordList): Observable<WordList> {
+    return this.http.post<WordList>(`${environment.apiUrl}dicionario?${params}`, data);
   }
 
-  updateWord(id: number, data: WordList): Observable<WordList> {
-    return this.http.put<WordList>(`${environment.apiUrl}dicionario/${id}`, data);
+  updateWord(data: WordList): Observable<WordList> {
+    return this.http.put<WordList>(`${environment.apiUrl}dicionario/${data.id}`, data);
+  }
+
+  deleteWord(idWord: number): Observable<WordList> {
+    return this.http.delete<WordList>(`${environment.apiUrl}dicionario/${idWord}`);
   }
 }
