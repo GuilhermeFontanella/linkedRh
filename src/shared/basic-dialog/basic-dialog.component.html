@@ -1,0 +1,21 @@
+<p-dialog [(visible)]="display" [style]="{width: '50vw'}" [modal]="true">
+    <ng-template pTemplate="header">
+        <h4>{{ header }} - {{data.word}}</h4>
+    </ng-template>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <p>{{ text }}</p>
+            </div>
+            <div class="col-12 mt-4 mb-4" style="text-align: center;">
+                <button 
+                type="button" 
+                pButton 
+                class="p-button blue" 
+                label="Fechar" 
+                style="padding: 0.5rem 1rem !important;"
+                (click)="closeDialogEvent.emit(display = false)"></button>
+            </div>
+        </div>
+    </div>
+</p-dialog>

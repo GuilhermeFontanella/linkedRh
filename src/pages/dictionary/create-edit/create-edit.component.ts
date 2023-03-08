@@ -25,8 +25,6 @@ export class CreateEditComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.data);
-    
     if (this.isDictionary) this.createForm(this.data);  
     else this.createForm(this.data);     
   }

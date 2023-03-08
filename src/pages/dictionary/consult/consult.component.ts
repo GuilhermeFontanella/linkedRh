@@ -5,11 +5,6 @@ import { Dictionary, WordList } from '../shared/dictionary';
 import { HttpParams } from '@angular/common/http';
 import { MessageService, ConfirmationService, PrimeIcons } from 'primeng/api';
 
-interface City {
-  name: string,
-  code: string
-}
-
 @Component({
   selector: 'app-consult',
   templateUrl: './consult.component.html',
@@ -19,9 +14,9 @@ export class ConsultComponent implements OnInit {
   id: number = 0;
   data: WordList[] = [] as WordList[];
   parentDictionary: Dictionary = {} as Dictionary;
-  selectedCity!: City;
   filteredByLetter: WordList[] = [] as WordList[];
-  display: boolean = false
+  display: boolean = false;
+  seeMore: boolean = false;
   editMode: boolean = false;
   createEdit: any;
 
@@ -106,12 +101,12 @@ export class ConsultComponent implements OnInit {
     this.service.updateWord(data).subscribe(() => {
       this.messageService.add({
         severity: 'success',
-        summary: 'Nova palavra criada com sucesso!'
+        summary: 'Palavra editada com sucesso!'
       });
     }, () => {
       this.messageService.add({
         severity: 'error',
-        summary: 'Ocorreu um erro na criação da palavra.'
+        summary: 'Ocorreu um erro na edição da palavra.'
       });
     })
   }
@@ -119,7 +114,6 @@ export class ConsultComponent implements OnInit {
   setEditMode(): void {
     if (this.editMode) this.editMode = false;
     else this.editMode = true;
-    console.log(this.editMode);
   }
 
   newWord(): void {
@@ -159,6 +153,11 @@ export class ConsultComponent implements OnInit {
         this.getDictionary(this.id);
       }
     })
+  }
+
+  seeMoreFunction(extraMeaning: any): void {
+    this.seeMore = true;
+    this.createEdit = extraMeaning;
   }
 
 }

@@ -1,7 +1,8 @@
+<p-messages></p-messages>
 <div class="container">
     <div class="title mt-5 mb-3">
         <div class="d-flex flex-row justify-content-between align-items-center">
-            <div class="">
+            <div>
                 <h2>{{ parentDictionary.name }}</h2>
                 <button 
                 pButton 
@@ -55,8 +56,8 @@
                     <div class="col-10">
                         <strong>{{ word.word }}</strong> 
                     </div>
-                    <div class="col-2" *ngIf="word.extraMeaning && !editMode" style="text-align: end;">
-                        <a href="" style="text-decoration: none;">Ver mais</a>
+                    <div class="col-2" *ngIf="word?.extraMeaning && !editMode" style="text-align: end;">
+                        <span (click)="seeMoreFunction(word)" style="text-decoration: none; cursor: pointer;">Ver mais</span>
                     </div>
                     <div class="col-2" *ngIf="editMode" style="text-align: end;">
                         <button
@@ -98,8 +99,8 @@
                     <div class="col-10">
                         <strong>{{ word.word }}</strong> 
                     </div>
-                    <div class="col-2" *ngIf="word.extraMeaning && !editMode" style="text-align: end;">
-                        <a href="" style="text-decoration: none;">Ver mais</a>
+                    <div class="col-2" *ngIf="word?.extraMeaning && !editMode" style="text-align: end;">
+                        <span style="text-decoration: none; cursor: pointer;" (click)="seeMoreFunction(word)">Ver mais</span>
                     </div>
                     <div class="col-2" *ngIf="editMode" style="text-align: end;">
                         <button
@@ -144,6 +145,12 @@ header="Nova palavra"
 (closeDialogEvent)="display = false" 
 (saveData)="saveWord($event)">
 </app-create-edit>
+
+<app-basic-dialog 
+[header]="'Definição Extra'" 
+[display]="seeMore" 
+[data]="createEdit"
+(closeDialogEvent)="seeMore = false"></app-basic-dialog>
 
 <p-confirmDialog
 [style]="{width: '30vw'}"

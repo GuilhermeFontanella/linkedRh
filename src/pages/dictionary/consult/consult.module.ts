@@ -10,7 +10,7 @@ import { CreateEditModule } from '../create-edit/create-edit.module';
 import { MessagesModule } from 'primeng/messages';
 import { TooltipModule } from 'primeng/tooltip';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-
+import { BasicDialogModule } from 'src/shared/basic-dialog/basic-dialog.module';
 
 
 
@@ -28,7 +28,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
     CreateEditModule,
     MessagesModule,
     TooltipModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    BasicDialogModule
   ]
 })
 export class ConsultModule { }
