@@ -11,11 +11,10 @@
     {
       "id": 2,
       "name": "Dicionário RH",
-      "description": "abc",
       "bgButton": "#CB0E00",
-      "fontColorButton": "#FFFFFF",
-      "titleColorFonts": "#253C89",
-      "iconColor": "#FFFFFF"
+      "fontColorButton": "#ff00ff",
+      "titleColorFonts": "#f2ff00",
+      "iconColor": "#00ff55"
     },
     {
       "id": 3,
@@ -53,8 +52,8 @@
       "id": 5,
       "parentDictionaryId": 2,
       "word": "Afogar",
-      "meaning": "<p>blabla</p>",
-      "extraMeaning": ""
+      "meaning": "blabla",
+      "extraMeaning": "<p>gygyug</p>"
     },
     {
       "id": 6,

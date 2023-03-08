@@ -3,9 +3,10 @@
     <div class="title mt-5 mb-3">
         <div class="d-flex flex-row justify-content-between align-items-center">
             <div>
-                <h2>{{ parentDictionary.name }}</h2>
+                <h2 [ngStyle]="titleStyle">{{ parentDictionary.name }}</h2>
                 <button 
-                pButton 
+                pButton
+                [ngStyle]="btnStyle" 
                 class="blue" 
                 type="button" 
                 icon="pi pi-plus" 
@@ -15,7 +16,7 @@
                 </button>            
             </div>
             <div class="d-flex flex-row align-items-center">
-                <a href="#" class="me-3" style="text-decoration: none;">abc</a>
+                <a href="#" class="me-3" style="text-decoration: none;" [ngStyle]="iconStyle">abc</a>
                 <button
                 *ngIf="!editMode" 
                 pButton 
@@ -26,7 +27,8 @@
                 [showDelay]="500"
                 tooltipPosition="bottom" 
                 class="p-button-rounded p-button-text"
-                (click)="setEditMode()">
+                (click)="setEditMode()"
+                [ngStyle]="iconStyle">
                 </button>
                 <button
                 *ngIf="editMode" 
@@ -104,6 +106,7 @@
                     </div>
                     <div class="col-2" *ngIf="editMode" style="text-align: end;">
                         <button
+                        [ngStyle]="iconStyle"
                         pButton 
                         pRipple 
                         type="button" 
@@ -115,7 +118,8 @@
                         (click)="editWord(word)">
                         </button>
                         <button
-                        pButton 
+                        pButton
+                        [ngStyle]="iconStyle" 
                         pRipple 
                         type="button" 
                         icon="pi pi-trash"

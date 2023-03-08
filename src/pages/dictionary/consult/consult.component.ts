@@ -20,6 +20,10 @@ export class ConsultComponent implements OnInit {
   editMode: boolean = false;
   createEdit: any;
 
+  btnStyle: Object = {};
+  titleStyle: Object = {};
+  iconStyle: Object = {};
+
   constructor(
     private service: DictionaryService,
     private messageService: MessageService,
@@ -30,12 +34,23 @@ export class ConsultComponent implements OnInit {
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.getDictionary(this.id);
+    
   }
 
   getDictionary(id: number): void {
     this.service.getParentDictionaryById(id).subscribe((response) => {
       this.parentDictionary = response;
       this.getDictionaryById(this.id);
+      this.btnStyle = {
+        'background-color': `${this.parentDictionary.bgButton}`,
+        'color': `${this.parentDictionary.fontColorButton}`,
+      };
+      this.titleStyle = {
+        'color': `${this.parentDictionary.titleColorFonts}`
+      };
+      this.iconStyle = {
+        'color': `${this.parentDictionary.iconColor}`
+      };
     });
   }
 
