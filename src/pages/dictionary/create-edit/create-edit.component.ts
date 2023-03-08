@@ -12,6 +12,10 @@ export class CreateEditComponent implements OnInit, OnChanges {
   @Output() saveData = new EventEmitter();
   @Input() display: boolean = true;
   @Input() data: Dictionary = {} as Dictionary;
+  @Input() isDictionary: boolean = false;
+  @Input() isWord: boolean = false;
+  @Input() header: string = 'Dicionário';
+
   form: FormGroup = {} as FormGroup;
 
   constructor(
@@ -21,21 +25,32 @@ export class CreateEditComponent implements OnInit, OnChanges {
   ngOnInit(): void {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.createForm(this.data);      
+    if (this.isDictionary) this.createForm(this.data);  
+    else this.createForm();     
   }
 
   createForm(data?: any) {
-    this.form = this.formBuilder.group({
-      id: [data?.id],
-      name: [data?.name, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-      bgButton: [data?.bgButton || '#253C89'],
-      fontColorButton: [data?.fontColorButton || '#FFFFFF'],
-      titleColorFonts: [data?.titleColorFonts || '#253C89'],
-      iconColor: [data?.iconColor || '#FFFFFF']
-    })
+    if (this.isDictionary) {
+      this.form = this.formBuilder.group({
+        id: [data?.id],
+        name: [data?.name, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+        bgButton: [data?.bgButton || '#253C89'],
+        fontColorButton: [data?.fontColorButton || '#FFFFFF'],
+        titleColorFonts: [data?.titleColorFonts || '#253C89'],
+        iconColor: [data?.iconColor || '#FFFFFF']
+      })
+    } else if (this.isWord) {
+      this.form = this.formBuilder.group({
+        id: [data?.id],
+        word: [data?.word, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+        meaning: [data?.meaning, [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
+        extraMeaning: [data?.extraMeaning, [Validators.required, Validators.minLength(3)]],
+        
+      })
+    }
   }
 
-  emitData(): void {
+  emitData(): void {    
     this.saveData.emit(this.form.value);
   }
 

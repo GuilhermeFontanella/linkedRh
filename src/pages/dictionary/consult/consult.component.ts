@@ -20,6 +20,7 @@ export class ConsultComponent implements OnInit {
   parentDictionary: Dictionary = {} as Dictionary;
   selectedCity!: City;
   filteredByLetter: WordList[] = [] as WordList[];
+  display: boolean = false
 
   constructor(
     private service: DictionaryService,
@@ -52,7 +53,6 @@ export class ConsultComponent implements OnInit {
     })
   }
 
-
   filterResults(data: {letter: string}) {
     this.filteredByLetter = [];
     this.data.map((el) => {
@@ -62,6 +62,18 @@ export class ConsultComponent implements OnInit {
         }
       }
     })
+  }
+
+  closeDialog(): void {
+    this.display = false;
+  }
+
+  showDialog(): void {
+    this.display = true;
+  }
+
+  saveWord(event: any): void {
+    //this.service.createNewWord()
   }
 
 }

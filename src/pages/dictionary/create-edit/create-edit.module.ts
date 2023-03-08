@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { EditorModule } from 'primeng/editor';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ColorPickerModule } from 'primeng/colorpicker';
     FormsModule,
     ReactiveFormsModule,
     InputTextModule,
-    ColorPickerModule
+    ColorPickerModule,
+    EditorModule
   ]
 })
 export class CreateEditModule { }

@@ -1,41 +1,67 @@
-<p-dialog header="Dicionário" [(visible)]="display" [style]="{width: '50vw'}" [modal]="true" (onHide)="closeDialogEvent.emit(display = false);">
- 
-    <form [formGroup]="form" (ngSubmit)="emitData()">
-        <div class="row mt-4">
-            <span class="p-float-label" >
-                <input id="float-input" style="width: 99%;" type="text" pInputText formControlName="name"> 
-                <label for="float-input" style="font-size: 15px;">Título</label>
-            </span>
-        </div>
-        <div class="d-flex flex-row row mt-4">
-            <div>
-                <p-colorPicker formControlName="bgButton" appendTo="body"></p-colorPicker>
-                <span class="ms-3 text-muted">Cor de fundo do botão</span>
+<p-dialog [header]="header" [(visible)]="display" [style]="{width: '50vw'}" [modal]="true" (onHide)="closeDialogEvent.emit(display = false);">
+    <div *ngIf="isDictionary">
+        <form [formGroup]="form" (ngSubmit)="emitData()">
+            <div class="row mt-4">
+                <span class="p-float-label" >
+                    <input id="float-input" style="width: 99%;" type="text" pInputText formControlName="name"> 
+                    <label for="float-input" style="font-size: 15px;">Título</label>
+                </span>
             </div>
-            <div class="mt-4">
-                <p-colorPicker formControlName="fontColorButton" appendTo="body"></p-colorPicker>
-                <span class="ms-3 text-muted">Cor da fonte do botão</span>
+            <div class="d-flex flex-row row mt-4">
+                <div>
+                    <p-colorPicker formControlName="bgButton" appendTo="body"></p-colorPicker>
+                    <span class="ms-3 text-muted">Cor de fundo do botão</span>
+                </div>
+                <div class="mt-4">
+                    <p-colorPicker formControlName="fontColorButton" appendTo="body"></p-colorPicker>
+                    <span class="ms-3 text-muted">Cor da fonte do botão</span>
+                </div>
+                <div class="mt-4">
+                    <p-colorPicker formControlName="titleColorFonts" appendTo="body"></p-colorPicker>
+                    <span class="ms-3 text-muted">Cor da fonte para títulos</span>
+                </div>
+                <div class="mt-4">
+                    <p-colorPicker formControlName="iconColor" appendTo="body"></p-colorPicker>
+                    <span class="ms-3 text-muted">Cor do ícone</span>
+                </div>
             </div>
-            <div class="mt-4">
-                <p-colorPicker formControlName="titleColorFonts" appendTo="body"></p-colorPicker>
-                <span class="ms-3 text-muted">Cor da fonte para títulos</span>
+            <div class="mt-4 mb-4" style="text-align: center;">
+                <button 
+                type="submit" 
+                pButton 
+                class="p-button blue" 
+                label="Salvar" 
+                style="padding: 0.5rem 1rem !important;"
+                [disabled]="!form.valid"></button>
             </div>
-            <div class="mt-4">
-                <p-colorPicker formControlName="iconColor" appendTo="body"></p-colorPicker>
-                <span class="ms-3 text-muted">Cor do ícone</span>
+        </form>
+    </div>
+
+    <div *ngIf="isWord">
+        <form [formGroup]="form" (ngSubmit)="emitData()">
+            <div class="row">
+                <span>
+                    <label class="mb-1" style="font-size: 15px;">Palavra</label>
+                    <input style="width: 99%;" type="text" pInputText formControlName="word"> 
+                </span>
+                <span class="mt-2">
+                    <label class="mb-1" style="font-size: 15px;">Definição</label>
+                    <input style="width: 99%;" type="text" pInputText formControlName="meaning"> 
+                </span>
+                <span class="mt-2">
+                    <label class="mb-1" style="font-size: 15px;">Definição extra</label>
+                    <p-editor formControlName="extraMeaning" [style]="{'height':'150px'}"></p-editor> 
+                </span>
             </div>
-        </div>
-        <div class="mt-4 mb-4" style="text-align: center;">
-            <button 
-            type="submit" 
-            pButton 
-            class="p-button blue" 
-            label="Salvar" 
-            style="padding: 0.5rem 1rem !important;"
-            [disabled]="!form.valid"></button>
-        </div>
-       
-    </form>
-        
-    
+            <div class="mt-4 mb-4" style="text-align: center;">
+                <button 
+                type="submit" 
+                pButton 
+                class="p-button blue" 
+                label="Salvar" 
+                style="padding: 0.5rem 1rem !important;"
+                [disabled]="!form.valid"></button>
+            </div>
+        </form>
+    </div>
 </p-dialog>

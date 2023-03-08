@@ -5,6 +5,8 @@ import { ListboxModule } from 'primeng/listbox';
 import { FormsModule } from '@angular/forms';
 import { DividerModule } from 'primeng/divider';
 import { PaginatorModule } from 'src/shared/paginator/paginator.module';
+import { ButtonModule } from 'primeng/button';
+import { CreateEditModule } from '../create-edit/create-edit.module';
 
 
 
@@ -17,7 +19,9 @@ import { PaginatorModule } from 'src/shared/paginator/paginator.module';
     FormsModule,
     DividerModule,
     PaginatorModule,
-    PaginatorModule
+    PaginatorModule,
+    ButtonModule,
+    CreateEditModule
   ]
 })
 export class ConsultModule { }

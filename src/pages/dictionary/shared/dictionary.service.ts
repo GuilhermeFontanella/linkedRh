@@ -2,7 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Dictionary, DictionaryData } from './dictionary';
+import { Dictionary, DictionaryData, WordList } from './dictionary';
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +35,13 @@ export class DictionaryService {
 
   updateDictionary(data: Dictionary): Observable<Dictionary> {
     return this.http.put<Dictionary>(`${environment.apiUrl}dicionarios/${data.id}`, data);
+  }
+
+  createNewWord(id: number, data: WordList): Observable<WordList> {
+    return this.http.post<WordList>(`${environment.apiUrl}dicionario/${id}`, data);
+  }
+
+  updateWord(id: number, data: WordList): Observable<WordList> {
+    return this.http.put<WordList>(`${environment.apiUrl}dicionario/${id}`, data);
   }
 }
