@@ -1,0 +1,123 @@
+{
+  "dicionarios": [
+    {
+      "id": 1,
+      "name": "Dicionário Join RH",
+      "bgButton": "#253C89",
+      "fontColorButton": "#FFFFFF",
+      "titleColorFonts": "#253C89",
+      "iconColor": "#FFFFFF"
+    },
+    {
+      "id": 2,
+      "name": "Dicionário RH",
+      "description": "abc",
+      "bgButton": "#CB0E00",
+      "fontColorButton": "#FFFFFF",
+      "titleColorFonts": "#253C89",
+      "iconColor": "#FFFFFF"
+    },
+    {
+      "id": 3,
+      "name": "Dicionário Geral",
+      "description": "abc",
+      "bgButton": "#253C89",
+      "fontColorButton": "#FFFFFF",
+      "titleColorFonts": "#253C89",
+      "iconColor": "#FFFFFF"
+    }
+  ],
+  "dicionario": [
+    {
+      "id": 2,
+      "parentDictionaryId": 1,
+      "word": "Lorem",
+      "meaning": "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+      "extraMeaning": "<p>blabla</p>"
+    },
+    {
+      "id": 3,
+      "parentDictionaryId": 1,
+      "word": "Abóbora",
+      "meaning": "uygoiygp;ughpigyuiyuog",
+      "extraMeaning": "<p>Teste</p>"
+    },
+    {
+      "id": 4,
+      "parentDictionaryId": 3,
+      "word": "Carvalho",
+      "meaning": "<p>blabla</p>",
+      "extraMeaning": ""
+    },
+    {
+      "id": 5,
+      "parentDictionaryId": 2,
+      "word": "Afogar",
+      "meaning": "<p>blabla</p>",
+      "extraMeaning": ""
+    },
+    {
+      "id": 6,
+      "parentDictionaryId": 1,
+      "word": "Perto",
+      "meaning": "Lorem Ipsum Lorem Ipsum Lorem Ipsum",
+      "extraMeaning": "<p>blabla</p>"
+    },
+    {
+      "id": 7,
+      "parentDictionaryId": 1,
+      "word": "Zebra",
+      "meaning": "uygoiygp;ughpigyuiyuog",
+      "extraMeaning": ""
+    },
+    {
+      "id": 8,
+      "parentDictionaryId": 1,
+      "word": "Orvalho",
+      "meaning": "oiiouoiuoiuoiuoiu",
+      "extraMeaning": ""
+    },
+    {
+      "parentDictionaryId": 1,
+      "word": "Loren Dicionário Join RH",
+      "meaning": "pertence ao Dicionário Join RH",
+      "extraMeaning": "<p>blabla</p>",
+      "id": 9
+    },
+    {
+      "parentDictionaryId": 2,
+      "word": "Loren Dicionário RH",
+      "meaning": "pertence ao Dicionário RH",
+      "extraMeaning": "<p>blabla</p>",
+      "id": 10
+    },
+    {
+      "id": 12,
+      "parentDictionaryId": 1,
+      "word": "Almondega",
+      "meaning": "Bolo de carne",
+      "extraMeaning": "<p>comida</p>"
+    },
+    {
+      "id": 13,
+      "parentDictionaryId": 3,
+      "word": "Copo",
+      "meaning": "teste",
+      "extraMeaning": "<p>blabla</p>"
+    },
+    {
+      "id": 14,
+      "parentDictionaryId": 3,
+      "word": "Teste",
+      "meaning": "teste",
+      "extraMeaning": "<p>teste</p>"
+    },
+    {
+      "id": 15,
+      "parentDictionaryId": 3,
+      "word": "Neve",
+      "meaning": "teste",
+      "extraMeaning": "<p>bla bla</p>"
+    }
+  ]
+}
