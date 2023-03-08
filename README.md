@@ -4,7 +4,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+The projeect's API is based on `json-server`, and all the data is located in `db.json` file in `./linkedRh/db.json`
+To run the back-end server just type in the terminal inside the project's file the command: `json-server --watch db.json` and that's it. All the data will be available on the application.
 
 ## Code scaffolding
 
